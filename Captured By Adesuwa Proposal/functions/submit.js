@@ -15,7 +15,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Proposals <onboarding@resend.dev>",
-        to: ["YOUR_OWN_REAL_EMAIL@GMAIL.COM"], // 👈 CHANGE THIS to your real email inbox!
+        to: "stakr.dev@gmail.com", // 👈 CHANGE THIS to your real email inbox!
         subject: `📸 Proposal Signed! — ${clientName}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eee;">
