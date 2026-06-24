@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --color-raw-dark: #0B0B0C;
+  --color-brand-amber: #EAB308;
+}
+
+/* Brutalist thick black heavy shadows and borders */
+.brutalist-border {
+  border: 4px solid #ffffff;
+}
+
+.brutalist-border-amber {
+  border: 4px solid #EAB308;
+}
+
+.brutalist-shadow-amber {
+  box-shadow: 8px 8px 0px 0px #EAB308;
+}
+
+.brutalist-shadow-white {
+  box-shadow: 8px 8px 0px 0px #ffffff;
+}
+
+@keyframes rawPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 8px 8px 0px 0px #EAB308;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 12px 12px 0px 0px #FACC15;
+  }
+}
+
+.brutalist-pulse {
+  animation: rawPulse 2.5s infinite ease-in-out;
+}
+

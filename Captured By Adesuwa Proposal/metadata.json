@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Gym Website Proposal",
+  "description": "A highly polished, premium single-page digital proposal for a professional photography portfolio with interactive pricing and customized options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
