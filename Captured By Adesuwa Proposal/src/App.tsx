@@ -765,12 +765,44 @@ export default function App() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const submitSignature = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!clientName || !signatureText) return;
-    setIsSignModalOpen(false);
-    setIsAccepted(true);
+  const submitSignature = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // Basic validation check
+  if (!clientName || !contactEmail || !signatureText) {
+    alert("❌ Please fill out all signature form fields before proceeding.");
+    return;
+  }
+
+  // Gather payload fields matching what your backend submit.js reads
+  const payload = {
+    clientName,
+    contactEmail,
+    signatureText,
+    currentPrice: currentPriceText || "Selected Package Tier",
+    gymName: "Captured By Adesuwa Photography Proposal"
   };
+
+  try {
+    const response = await fetch("/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      // Transition UI smoothly only after a 200 OK delivery confirmation
+      setIsSignModalOpen(false);
+      setIsAccepted(true);
+    } else {
+      const errorText = await response.text();
+      alert(`❌ SERVER ERROR (${response.status}): ${errorText}`);
+    }
+
+  } catch (err: any) {
+    alert(`❌ NETWORK ERROR: Unable to contact backend edge endpoint. ${err.message}`);
+  }
+};
 
   const totalSelectedAddonsCount = Object.keys(selectedAddons).filter(k => selectedAddons[k]).length;
 
